@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupRecyclerView()
-        fetchDataWithNotifyDataseChanged()
+        fetchDataWithNotifyDatasetChanged()
     }
 
     private fun setupRecyclerView() {
@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
-    private fun fetchDataWithNotifyDataseChanged() {
+    private fun fetchDataWithNotifyDatasetChanged() {
         getCharacters()
-        characterAdapter.characters = getCharacters()
+        characterAdapter.setCharactersWithNotifyDataSetChanged(getCharacters())
     }
 
     private fun getCharacters(): List<Character> {

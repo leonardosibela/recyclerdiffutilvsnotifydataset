@@ -7,17 +7,15 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.character_list_item.view.*
 
-class CharacterNotifyAdapter(private var charactersField: List<Character>) :
+class CharacterNotifyAdapter(private var characters: List<Character>) :
     RecyclerView.Adapter<CharacterNotifyAdapter.BlogListViewHolder>() {
 
-    var characters
-        get() = charactersField
-        set(value) {
-            this.charactersField = value
+   fun setCharactersWithNotifyDataSetChanged(characters: List<Character>) {
+            this.characters = characters
             notifyDataSetChanged()
         }
 
-    override fun getItemCount() = charactersField.size
+    override fun getItemCount() = characters.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlogListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -26,7 +24,7 @@ class CharacterNotifyAdapter(private var charactersField: List<Character>) :
     }
 
     override fun onBindViewHolder(holder: BlogListViewHolder, position: Int) {
-        val blog = charactersField[position]
+        val blog = characters[position]
         holder.bind(blog)
     }
 
